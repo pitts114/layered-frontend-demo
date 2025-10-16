@@ -18,6 +18,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: <%= ENV["DATABASE_PORT"] %>
 
 
 development:
@@ -82,8 +86,6 @@ production:
   primary: &primary_production
     <<: *default
     database: obm_server_production
-    username: obm_server
-    password: <%= ENV["OBM_SERVER_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: obm_server_production_cache
