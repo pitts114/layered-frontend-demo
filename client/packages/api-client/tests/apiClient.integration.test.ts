@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { ApiClient } from '../../src/lib/apiClient';
+import { describe, it, expect, beforeAll } from 'vitest';
+import { ApiClient } from '../src/apiClient';
 
 /**
  * Integration tests for ApiClient

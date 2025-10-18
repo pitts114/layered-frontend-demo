@@ -56,11 +56,11 @@ export class ApiClient {
         },
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as T;
 
       if (!response.ok) {
         return {
-          error: data.error || `HTTP error: ${response.status}`,
+          error: (data as { error?: string }).error || `HTTP error: ${response.status}`,
         };
       }
 
