@@ -40,7 +40,12 @@ export async function createTestUser(
       return null;
     }
 
-    return await response.json();
+    return (await response.json()) as {
+      id: number;
+      email: string;
+      password: string;
+      created_at: string;
+    };
   } catch (error) {
     console.error('Error creating test user:', error);
     return null;
