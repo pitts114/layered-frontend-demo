@@ -31,7 +31,9 @@ describe('App Component', () => {
 
     it('renders the informational text', () => {
       renderWithProviders(<App />);
-      expect(screen.getByText('Click on the Vite and React logos to learn more')).toBeInTheDocument();
+      expect(
+        screen.getByText('Click on the Vite and React logos to learn more')
+      ).toBeInTheDocument();
     });
   });
 
@@ -91,8 +93,8 @@ describe('App Component', () => {
     it('can render with preloaded state', () => {
       renderWithProviders(<App />, {
         preloadedState: {
-          counter: { value: 10 }
-        }
+          counter: { value: 10 },
+        },
       });
 
       expect(screen.getByText(/count: 10/i)).toBeInTheDocument();
@@ -101,8 +103,8 @@ describe('App Component', () => {
     it('increments from preloaded state correctly', () => {
       renderWithProviders(<App />, {
         preloadedState: {
-          counter: { value: 10 }
-        }
+          counter: { value: 10 },
+        },
       });
 
       const incrementButton = screen.getByRole('button', { name: /increment/i });

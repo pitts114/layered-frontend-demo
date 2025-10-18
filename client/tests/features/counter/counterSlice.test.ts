@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import counterReducer, { increment, decrement, selectCount } from '../../../src/features/counter/counterSlice';
+import counterReducer, {
+  increment,
+  decrement,
+  selectCount,
+} from '../../../src/features/counter/counterSlice';
 
 describe('counter reducer', () => {
   const initialState = {
