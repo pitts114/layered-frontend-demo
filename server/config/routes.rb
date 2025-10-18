@@ -10,10 +10,15 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   namespace :api do
+    # User registration
+    post "register", to: "users#create"
+
     # Session routes
     get "login", to: "sessions#new", as: :login
     post "login", to: "sessions#create"
     delete "logout", to: "sessions#destroy", as: :logout
+
+    # Current user info
     get "me", to: "users#show"
 
     # Factory routes (only available in development and test environments)
