@@ -1,8 +1,33 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig, mergeConfig } from 'vitest/config';
+import viteConfig from './vite.config';
 
-export default defineConfig({
-  test: {
-    globals: true,
-    environment: 'node',
-  },
-});
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      globals: true,
+      // Use separate projects for unit tests (Node) and integration tests (Browser)
+      projects: [
+        {
+          test: {
+            name: 'unit',
+            environment: 'node',
+            include: ['tests/apiClient.test.ts'],
+          },
+        },
+        {
+          test: {
+            name: 'integration',
+            browser: {
+              enabled: true,
+              name: 'chromium',
+              provider: 'playwright',
+              headless: true,
+            },
+            include: ['tests/**/*.integration.test.ts'],
+          },
+        },
+      ],
+    },
+  })
+);

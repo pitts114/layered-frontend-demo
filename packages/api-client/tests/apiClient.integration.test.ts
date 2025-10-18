@@ -1,28 +1,6 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterEach } from 'vitest';
 import { ApiClient } from '../src/apiClient';
-
-/**
- * Integration tests for ApiClient
- *
- * These tests make real HTTP requests to the Rails server.
- * To run these tests, ensure the Rails server is running on localhost:3000
- * and has test data set up.
- *
- * You can skip these tests by running: npm test -- --exclude integration
- */
-
-// Configuration for the test server
-const TEST_SERVER_CONFIG = {
-  hostname: process.env.TEST_API_HOSTNAME || 'localhost',
-  port: process.env.TEST_API_PORT ? parseInt(process.env.TEST_API_PORT) : 3000,
-  protocol: (process.env.TEST_API_PROTOCOL as 'http' | 'https') || 'http',
-};
-
-// Test user credentials - these should exist in your test database
-const TEST_USER = {
-  email: process.env.TEST_USER_EMAIL || 'test@example.com',
-  password: process.env.TEST_USER_PASSWORD || 'password123',
-};
+import { createTestUser, TEST_SERVER_CONFIG } from './testUtils';
 
 describe('ApiClient - Integration Tests', () => {
   let apiClient: ApiClient;
@@ -31,33 +9,28 @@ describe('ApiClient - Integration Tests', () => {
     apiClient = new ApiClient(TEST_SERVER_CONFIG);
   });
 
+  afterEach(async () => {
+    // Logout after each test to ensure clean state
+    await apiClient.logout();
+  });
+
   describe('Authentication Flow', () => {
     it('should successfully login with valid credentials', async () => {
-      const result = await apiClient.login(TEST_USER.email, TEST_USER.password);
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
 
-      if (result.error) {
-        console.error('Login failed:', result.error);
-        console.log('Make sure the Rails server is running and test user exists');
-        // Skip assertion if server is not available
-        expect(result.error).toContain('');
-        return;
-      }
+      const result = await apiClient.login(user!.email, user!.password);
 
+      expect(result.error).toBeUndefined();
       expect(result.data).toBeDefined();
       expect(result.data?.message).toBe('Logged in successfully');
       expect(result.data?.user).toBeDefined();
-      expect(result.data?.user.email).toBe(TEST_USER.email);
+      expect(result.data?.user.email).toBe(user!.email);
       expect(result.data?.user.id).toBeTypeOf('number');
     });
 
     it('should fail login with invalid credentials', async () => {
       const result = await apiClient.login('invalid@example.com', 'wrongpassword');
-
-      // If server is not available, skip
-      if (result.error && result.error.includes('fetch')) {
-        console.log('Skipping test - server not available');
-        return;
-      }
 
       expect(result.data).toBeUndefined();
       expect(result.error).toBeDefined();
@@ -65,17 +38,14 @@ describe('ApiClient - Integration Tests', () => {
     });
 
     it('should successfully logout', async () => {
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
+
       // First login
-      await apiClient.login(TEST_USER.email, TEST_USER.password);
+      await apiClient.login(user!.email, user!.password);
 
       // Then logout
       const result = await apiClient.logout();
-
-      // If server is not available, skip
-      if (result.error && result.error.includes('fetch')) {
-        console.log('Skipping test - server not available');
-        return;
-      }
 
       expect(result.data).toBeDefined();
       expect(result.data?.message).toBe('Logged out successfully');
@@ -85,21 +55,19 @@ describe('ApiClient - Integration Tests', () => {
 
   describe('User Information', () => {
     it('should get current user when authenticated', async () => {
-      // First login
-      const loginResult = await apiClient.login(TEST_USER.email, TEST_USER.password);
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
 
-      // If server is not available, skip
-      if (loginResult.error) {
-        console.log('Skipping test - server not available');
-        return;
-      }
+      // First login
+      const loginResult = await apiClient.login(user!.email, user!.password);
+      expect(loginResult.error).toBeUndefined();
 
       // Get current user
       const result = await apiClient.getCurrentUser();
 
       expect(result.data).toBeDefined();
       expect(result.data?.id).toBeTypeOf('number');
-      expect(result.data?.email).toBe(TEST_USER.email);
+      expect(result.data?.email).toBe(user!.email);
       expect(result.data?.created_at).toBeDefined();
       expect(result.error).toBeUndefined();
     });
@@ -111,12 +79,6 @@ describe('ApiClient - Integration Tests', () => {
       // Try to get current user
       const result = await apiClient.getCurrentUser();
 
-      // If server is not available, skip
-      if (result.error && result.error.includes('fetch')) {
-        console.log('Skipping test - server not available');
-        return;
-      }
-
       expect(result.data).toBeUndefined();
       expect(result.error).toBeDefined();
       expect(result.error).toBe('Unauthorized');
@@ -125,22 +87,18 @@ describe('ApiClient - Integration Tests', () => {
 
   describe('Complete Authentication Workflow', () => {
     it('should handle complete login -> get user -> logout workflow', async () => {
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
+
       // Step 1: Login
-      const loginResult = await apiClient.login(TEST_USER.email, TEST_USER.password);
-
-      // If server is not available, skip entire workflow test
-      if (loginResult.error) {
-        console.log('Skipping workflow test - server not available');
-        return;
-      }
-
+      const loginResult = await apiClient.login(user!.email, user!.password);
       expect(loginResult.data).toBeDefined();
       expect(loginResult.error).toBeUndefined();
 
       // Step 2: Get current user
       const userResult = await apiClient.getCurrentUser();
       expect(userResult.data).toBeDefined();
-      expect(userResult.data?.email).toBe(TEST_USER.email);
+      expect(userResult.data?.email).toBe(user!.email);
       expect(userResult.error).toBeUndefined();
 
       // Step 3: Logout
@@ -157,47 +115,39 @@ describe('ApiClient - Integration Tests', () => {
 
   describe('Session Persistence', () => {
     it('should maintain session across multiple requests', async () => {
-      // Login
-      const loginResult = await apiClient.login(TEST_USER.email, TEST_USER.password);
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
 
-      if (loginResult.error) {
-        console.log('Skipping test - server not available');
-        return;
-      }
+      // Login
+      const loginResult = await apiClient.login(user!.email, user!.password);
+      expect(loginResult.error).toBeUndefined();
 
       // Make multiple authenticated requests
       const result1 = await apiClient.getCurrentUser();
       const result2 = await apiClient.getCurrentUser();
       const result3 = await apiClient.getCurrentUser();
 
-      expect(result1.data?.email).toBe(TEST_USER.email);
-      expect(result2.data?.email).toBe(TEST_USER.email);
-      expect(result3.data?.email).toBe(TEST_USER.email);
-
-      // Cleanup
-      await apiClient.logout();
+      expect(result1.data?.email).toBe(user!.email);
+      expect(result2.data?.email).toBe(user!.email);
+      expect(result3.data?.email).toBe(user!.email);
     });
   });
 
   describe('Error Handling', () => {
     it('should handle missing email parameter gracefully', async () => {
-      const result = await apiClient.login('', TEST_USER.password);
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
 
-      if (result.error && result.error.includes('fetch')) {
-        console.log('Skipping test - server not available');
-        return;
-      }
+      const result = await apiClient.login('', user!.password);
 
       expect(result.error).toBeDefined();
     });
 
     it('should handle missing password parameter gracefully', async () => {
-      const result = await apiClient.login(TEST_USER.email, '');
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
 
-      if (result.error && result.error.includes('fetch')) {
-        console.log('Skipping test - server not available');
-        return;
-      }
+      const result = await apiClient.login(user!.email, '');
 
       expect(result.error).toBeDefined();
     });
