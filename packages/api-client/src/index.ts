@@ -4,6 +4,8 @@ export type {
   ApiResult,
   LoginRequest,
   LoginResponse,
+  RegisterRequest,
+  RegisterResponse,
   UserResponse,
   LogoutResponse,
 } from './apiClient';

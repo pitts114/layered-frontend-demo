@@ -9,6 +9,33 @@ const TEST_SERVER_CONFIG = {
 };
 
 /**
+ * Helper function to generate a unique email via the factory API
+ */
+export async function generateEmail(): Promise<string | null> {
+  try {
+    const baseUrl = `${TEST_SERVER_CONFIG.protocol}://${TEST_SERVER_CONFIG.hostname}:${TEST_SERVER_CONFIG.port}`;
+
+    const response = await fetch(`${baseUrl}/api/factory/generate_email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      console.error('Failed to generate email via factory:', response.status);
+      return null;
+    }
+
+    const data = (await response.json()) as { email: string };
+    return data.email;
+  } catch (error) {
+    console.error('Error generating email:', error);
+    return null;
+  }
+}
+
+/**
  * Helper function to create a test user via the factory API
  */
 export async function createTestUser(

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterEach } from 'vitest';
 import { ApiClient } from '../src/apiClient';
-import { createTestUser, TEST_SERVER_CONFIG } from './testUtils';
+import { createTestUser, generateEmail, TEST_SERVER_CONFIG } from './testUtils';
 
 describe('ApiClient - Integration Tests', () => {
   let apiClient: ApiClient;
@@ -12,6 +12,72 @@ describe('ApiClient - Integration Tests', () => {
   afterEach(async () => {
     // Logout after each test to ensure clean state
     await apiClient.logout();
+  });
+
+  describe('User Registration', () => {
+    it('should successfully register a new user', async () => {
+      const email = await generateEmail();
+      expect(email).not.toBeNull();
+
+      const password = 'testPassword123';
+      const result = await apiClient.register(email!, password);
+
+      expect(result.error).toBeUndefined();
+      expect(result.data).toBeDefined();
+      expect(result.data?.message).toBe('User registered successfully');
+      expect(result.data?.user).toBeDefined();
+      expect(result.data?.user.email).toBe(email!.toLowerCase());
+      expect(result.data?.user.id).toBeTypeOf('number');
+      expect(result.data?.user.created_at).toBeDefined();
+    });
+
+    it('should automatically log in user after registration', async () => {
+      const email = await generateEmail();
+      expect(email).not.toBeNull();
+
+      const password = 'testPassword123';
+      await apiClient.register(email!, password);
+
+      // Try to get current user - should work if logged in
+      const userResult = await apiClient.getCurrentUser();
+
+      expect(userResult.error).toBeUndefined();
+      expect(userResult.data).toBeDefined();
+      expect(userResult.data?.email).toBe(email!.toLowerCase());
+    });
+
+    it('should fail when email is already taken', async () => {
+      const user = await createTestUser();
+      expect(user).not.toBeNull();
+
+      const result = await apiClient.register(user!.email, 'password123');
+
+      expect(result.data).toBeUndefined();
+      expect(result.error).toBeDefined();
+    });
+
+    it('should fail when password is too short', async () => {
+      const email = await generateEmail();
+      expect(email).not.toBeNull();
+
+      const result = await apiClient.register(email!, '123');
+
+      expect(result.data).toBeUndefined();
+      expect(result.error).toBeDefined();
+    });
+
+    it('should downcase email before saving', async () => {
+      const email = await generateEmail();
+      expect(email).not.toBeNull();
+
+      const uppercaseEmail = email!.toUpperCase();
+      const password = 'testPassword123';
+      const result = await apiClient.register(uppercaseEmail, password);
+
+      expect(result.error).toBeUndefined();
+      expect(result.data).toBeDefined();
+      expect(result.data?.user.email).toBe(email!.toLowerCase());
+    });
   });
 
   describe('Authentication Flow', () => {

@@ -23,6 +23,21 @@ export interface LoginResponse {
   };
 }
 
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  password_confirmation?: string;
+}
+
+export interface RegisterResponse {
+  message: string;
+  user: {
+    id: number;
+    email: string;
+    created_at: string;
+  };
+}
+
 export interface UserResponse {
   id: number;
   email: string;
@@ -70,6 +85,23 @@ export class ApiClient {
         error: error instanceof Error ? error.message : 'Unknown error occurred',
       };
     }
+  }
+
+  register(
+    email: string,
+    password: string,
+    passwordConfirmation?: string
+  ): Promise<ApiResult<RegisterResponse>> {
+    return this.request<RegisterResponse>('/api/register', {
+      method: 'POST',
+      body: JSON.stringify({
+        user: {
+          email,
+          password,
+          password_confirmation: passwordConfirmation || password,
+        },
+      }),
+    });
   }
 
   login(email: string, password: string): Promise<ApiResult<LoginResponse>> {

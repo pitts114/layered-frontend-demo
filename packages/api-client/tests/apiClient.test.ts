@@ -53,6 +53,99 @@ describe('ApiClient', () => {
     });
   });
 
+  describe('register', () => {
+    it('returns success response when registration succeeds', async () => {
+      const mockResponse = {
+        message: 'User registered successfully',
+        user: { id: 1, email: 'newuser@example.com', created_at: '2025-10-18T00:00:00.000Z' },
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await apiClient.register('newuser@example.com', 'password123');
+
+      expect(result.data).toEqual(mockResponse);
+      expect(result.error).toBeUndefined();
+      expect(fetchMock).toHaveBeenCalledWith('http://localhost:3000/api/register', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user: {
+            email: 'newuser@example.com',
+            password: 'password123',
+            password_confirmation: 'password123',
+          },
+        }),
+      });
+    });
+
+    it('accepts custom password confirmation', async () => {
+      const mockResponse = {
+        message: 'User registered successfully',
+        user: { id: 1, email: 'newuser@example.com', created_at: '2025-10-18T00:00:00.000Z' },
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      });
+
+      const result = await apiClient.register('newuser@example.com', 'password123', 'password123');
+
+      expect(result.data).toEqual(mockResponse);
+      expect(result.error).toBeUndefined();
+    });
+
+    it('returns error when email is already taken', async () => {
+      const mockErrorResponse = {
+        errors: ['Email has already been taken'],
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: false,
+        status: 422,
+        json: async () => mockErrorResponse,
+      });
+
+      const result = await apiClient.register('existing@example.com', 'password123');
+
+      expect(result.data).toBeUndefined();
+      expect(result.error).toBeDefined();
+    });
+
+    it('returns error when password is too short', async () => {
+      const mockErrorResponse = {
+        errors: ['Password is too short (minimum is 6 characters)'],
+      };
+
+      fetchMock.mockResolvedValueOnce({
+        ok: false,
+        status: 422,
+        json: async () => mockErrorResponse,
+      });
+
+      const result = await apiClient.register('test@example.com', '123');
+
+      expect(result.data).toBeUndefined();
+      expect(result.error).toBeDefined();
+    });
+
+    it('handles network errors during registration', async () => {
+      fetchMock.mockRejectedValueOnce(new Error('Network error'));
+
+      const result = await apiClient.register('test@example.com', 'password123');
+
+      expect(result.data).toBeUndefined();
+      expect(result.error).toBe('Network error');
+    });
+  });
+
   describe('login', () => {
     it('returns success response when login succeeds', async () => {
       const mockResponse = {
