@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     # Factory routes (only available in development and test environments)
     if Rails.env.development? || Rails.env.test?
       post "factory/create_user", to: "factory#create_user"
+      post "factory/generate_email", to: "factory#generate_email"
     end
   end
 

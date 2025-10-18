@@ -23,6 +23,11 @@ module Api
       }, status: :created
     end
 
+    def generate_email
+      email = Faker::Internet.unique.email
+      render json: { email: email }, status: :ok
+    end
+
     private
 
     def prevent_production_access
