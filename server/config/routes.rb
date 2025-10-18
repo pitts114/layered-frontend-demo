@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     post "login", to: "sessions#create"
     delete "logout", to: "sessions#destroy", as: :logout
     get "me", to: "users#show"
+
+    # Factory routes (only available in development and test environments)
+    if Rails.env.development? || Rails.env.test?
+      post "factory/create_user", to: "factory#create_user"
+    end
   end
 
   # Defines the root path route ("/")
