@@ -20,8 +20,8 @@ export default mergeConfig(
             name: 'integration',
             browser: {
               enabled: true,
-              name: 'chromium',
               provider: 'playwright',
+              instances: [{ browser: 'chromium' }],
               headless: true,
             },
             include: ['tests/**/*.integration.test.ts'],
