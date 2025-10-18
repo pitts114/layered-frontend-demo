@@ -74,7 +74,7 @@ RSpec.describe "Api::Users", type: :request do
       it "returns error when email is missing" do
         post "/api/register", params: { user: { password: "password123" } }
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         json_response = JSON.parse(response.body)
         expect(json_response["errors"]).to include(match(/Email can't be blank/))
       end
@@ -82,7 +82,7 @@ RSpec.describe "Api::Users", type: :request do
       it "returns error when password is too short" do
         post "/api/register", params: { user: { email: "test@example.com", password: "123" } }
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         json_response = JSON.parse(response.body)
         expect(json_response["errors"]).to include(match(/Password is too short/))
       end
@@ -91,7 +91,7 @@ RSpec.describe "Api::Users", type: :request do
         User.create!(email: "existing@example.com", password: "password123")
         post "/api/register", params: { user: { email: "existing@example.com", password: "password123" } }
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         json_response = JSON.parse(response.body)
         expect(json_response["errors"]).to include(match(/Email has already been taken/))
       end
