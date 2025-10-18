@@ -46,6 +46,46 @@ RSpec.describe User, type: :model do
         expect(user).to be_valid
       end
     end
+
+    describe "password_confirmation" do
+      it "is valid when password and password_confirmation match" do
+        user = User.new(email: "test@example.com", password: "password123", password_confirmation: "password123")
+        expect(user).to be_valid
+      end
+
+      it "is invalid when password and password_confirmation do not match" do
+        user = User.new(email: "test@example.com", password: "password123", password_confirmation: "different123")
+        expect(user).not_to be_valid
+        expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+      end
+
+      it "is valid when password_confirmation is not provided" do
+        user = User.new(email: "test@example.com", password: "password123")
+        expect(user).to be_valid
+      end
+
+      it "is invalid when password_confirmation is blank but provided" do
+        user = User.new(email: "test@example.com", password: "password123", password_confirmation: "")
+        expect(user).not_to be_valid
+        expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+      end
+
+      it "creates user when password_confirmation matches" do
+        expect {
+          User.create!(email: "test@example.com", password: "password123", password_confirmation: "password123")
+        }.to change(User, :count).by(1)
+      end
+
+      it "does not create user when password_confirmation does not match" do
+        expect {
+          begin
+            User.create!(email: "test@example.com", password: "password123", password_confirmation: "wrong")
+          rescue ActiveRecord::RecordInvalid
+            # Expected to raise
+          end
+        }.not_to change(User, :count)
+      end
+    end
   end
 
   describe "authentication" do
