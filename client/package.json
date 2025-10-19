@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@obm/api-client": "file:../packages/api-client",
-    "@reduxjs/toolkit": "^2.9.1",
+    "@obm/domain": "file:../packages/domain",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0"

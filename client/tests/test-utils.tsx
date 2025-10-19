@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
-import { setupStore } from '../src/store/store';
-import type { AppStore, RootState } from '../src/store/store';
+import { setupStore } from '@obm/domain';
+import type { AppStore, RootState } from '@obm/domain';
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.

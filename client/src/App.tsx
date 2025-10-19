@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from './store/hooks';
-import { increment, decrement, selectCount } from './features/counter/counterSlice';
+import { increment, decrement, selectCount } from '@obm/domain';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
