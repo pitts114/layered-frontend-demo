@@ -44,3 +44,7 @@ export * from './Tag';
 // Interactive
 export * from './IconButton';
 export * from './ButtonGroup';
+
+// Theme
+export * from './Background';
+export * from './ThemeToggle';
