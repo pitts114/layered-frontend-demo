@@ -1,17 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import {
-  Background,
-  Navbar,
-  ThemeToggle,
-  useDarkMode,
-  Button,
-  Flex,
-  Text,
-  Spinner,
-} from '@obm/ui-components';
+import { Background, Navbar, ThemeToggle, Button, Flex, Text, Spinner } from '@obm/ui-components';
 import { useAppSelector, useAppDispatch } from './store/hooks';
 import { selectIsAuthenticated, selectAuthInitializing, logoutUser, checkAuth } from '@obm/domain';
+import { useDarkMode } from './hooks';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { HomePage } from './pages/HomePage';
