@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly --declaration --declarationMap",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
