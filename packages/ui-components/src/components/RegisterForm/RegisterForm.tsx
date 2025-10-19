@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from 'react';
+import { Input } from '../Input';
 
 export interface RegisterFormProps {
   onSubmit: (email: string, password: string, passwordConfirmation: string) => void;
@@ -47,26 +48,21 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         )}
 
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2">
-            Email
-          </label>
-          <input
+          <Input
             id="email"
+            label="Email"
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700 text-sm font-semibold mb-2">
-            Password
-          </label>
-          <input
+          <Input
             id="password"
+            label="Password"
             type="password"
             value={password}
             onChange={e => {
@@ -74,20 +70,14 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
               setPasswordMismatch(false);
             }}
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
           />
         </div>
 
         <div className="mb-6">
-          <label
-            htmlFor="passwordConfirmation"
-            className="block text-gray-700 text-sm font-semibold mb-2"
-          >
-            Confirm Password
-          </label>
-          <input
+          <Input
             id="passwordConfirmation"
+            label="Confirm Password"
             type="password"
             value={passwordConfirmation}
             onChange={e => {
@@ -95,7 +85,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
               setPasswordMismatch(false);
             }}
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
           />
         </div>

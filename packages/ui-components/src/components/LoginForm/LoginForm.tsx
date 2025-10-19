@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from 'react';
+import { Input } from '../Input';
 
 export interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -27,31 +28,25 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, error, isLoading
         )}
 
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2">
-            Email
-          </label>
-          <input
+          <Input
             id="email"
+            label="Email"
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
           />
         </div>
 
         <div className="mb-6">
-          <label htmlFor="password" className="block text-gray-700 text-sm font-semibold mb-2">
-            Password
-          </label>
-          <input
+          <Input
             id="password"
+            label="Password"
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
           />
         </div>
