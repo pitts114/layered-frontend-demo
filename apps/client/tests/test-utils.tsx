@@ -28,7 +28,10 @@ export function renderWithProviders(
   {
     preloadedState = {},
     services,
-    store = setupStore(services || { apiClient: createMockApiClient() }, preloadedState),
+    store = setupStore(
+      services || { apiClient: createMockApiClient() },
+      preloadedState as Partial<RootState>
+    ),
     initialRoutes = ['/'],
     withRouter = true,
     ...renderOptions
