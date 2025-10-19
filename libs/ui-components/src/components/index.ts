@@ -17,6 +17,7 @@ export * from './Flex';
 export * from './Divider';
 export * from './Spacer';
 export * from './Box';
+export * from './Navbar';
 
 // Forms
 export * from './Textarea';

@@ -1,31 +1,75 @@
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import {
+  Background,
+  Navbar,
+  ThemeToggle,
+  useDarkMode,
+  Button,
+  Flex,
+  Text,
+} from '@obm/ui-components';
 import { useAppSelector, useAppDispatch } from './store/hooks';
-import { increment, decrement, selectCount } from '@obm/domain';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { selectIsAuthenticated, logoutUser } from '@obm/domain';
+import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
+import { HomePage } from './pages/HomePage';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
-function App() {
-  const count = useAppSelector(selectCount);
+function AppContent() {
+  const { isDark, toggleDarkMode } = useDarkMode();
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await dispatch(logoutUser());
+    navigate('/login');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => dispatch(increment())}>Increment</button>
-        <button onClick={() => dispatch(decrement())}>Decrement</button>
-        <p>Count: {count}</p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <Background>
+      <Navbar
+        left={
+          <Text
+            variant="body1"
+            weight="semibold"
+            className="text-lg text-blue-600 dark:text-blue-400"
+          >
+            OBM
+          </Text>
+        }
+        right={
+          <Flex align="center" gap={3}>
+            <ThemeToggle isDark={isDark} onToggle={toggleDarkMode} />
+            {isAuthenticated && (
+              <Button onClick={handleLogout} variant="secondary" size="small">
+                Logout
+              </Button>
+            )}
+          </Flex>
+        }
+      />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Background>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
 
