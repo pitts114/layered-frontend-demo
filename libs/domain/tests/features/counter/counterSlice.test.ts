@@ -4,6 +4,7 @@ import counterReducer, {
   decrement,
   selectCount,
 } from '../../../src/features/counter/counterSlice';
+import { RootState } from '../../../src';
 
 describe('counter reducer', () => {
   const initialState = {
@@ -34,7 +35,7 @@ describe('selectCount', () => {
       counter: {
         value: 10,
       },
-    };
+    } as RootState;
     const result = selectCount(state);
     expect(result).toBe(10);
   });
