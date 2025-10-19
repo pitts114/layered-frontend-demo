@@ -15,8 +15,8 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@obm/api-client": "file:../packages/api-client",
-    "@obm/domain": "file:../packages/domain",
+    "@obm/api-client": "file:../../libs/api-client",
+    "@obm/domain": "file:../../libs/domain",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0"
