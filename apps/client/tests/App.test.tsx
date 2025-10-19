@@ -17,6 +17,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: true,
+            isInitializing: true,
             error: null,
             isAuthenticated: false,
           },
@@ -36,6 +37,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: true,
+            isInitializing: true,
             error: null,
             isAuthenticated: false,
           },
@@ -54,6 +56,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: true,
+            isInitializing: true,
             error: null,
             isAuthenticated: false,
           },
@@ -75,6 +78,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: true,
+            isInitializing: true,
             error: null,
             isAuthenticated: false,
           },
@@ -100,6 +104,7 @@ describe('App', () => {
           auth: {
             user: { id: 1, email: 'test@example.com' },
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: true,
           },
@@ -124,6 +129,7 @@ describe('App', () => {
           auth: {
             user: { id: 1, email: 'test@example.com' },
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: true,
           },
@@ -148,6 +154,7 @@ describe('App', () => {
           auth: {
             user: { id: 1, email: 'test@example.com' },
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: true,
           },
@@ -170,6 +177,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: false,
           },
@@ -189,6 +197,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: false,
           },
@@ -208,6 +217,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: false,
           },
@@ -230,6 +240,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: false,
           },
@@ -249,6 +260,7 @@ describe('App', () => {
           auth: {
             user: null,
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: false,
           },
@@ -273,6 +285,7 @@ describe('App', () => {
           auth: {
             user: { id: 1, email: 'test@example.com' },
             isLoading: false,
+            isInitializing: false,
             error: null,
             isAuthenticated: true,
           },

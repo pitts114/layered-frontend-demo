@@ -14,6 +14,7 @@ export {
   selectUser,
   selectIsAuthenticated,
   selectAuthLoading,
+  selectAuthInitializing,
   selectAuthError,
 } from './features/auth/authSlice';
 export type { User, AuthState } from './features/auth/authSlice';

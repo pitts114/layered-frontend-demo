@@ -2,13 +2,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginForm, Flex, Box, Text } from '@obm/ui-components';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import {
-  loginUser,
-  selectAuthLoading,
-  selectAuthError,
-  selectIsAuthenticated,
-  clearError,
-} from '@obm/domain';
+import { loginUser, selectAuthLoading, selectAuthError, selectIsAuthenticated } from '@obm/domain';
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -16,10 +10,6 @@ export const LoginPage = () => {
   const isLoading = useAppSelector(selectAuthLoading);
   const error = useAppSelector(selectAuthError);
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
-
-  useEffect(() => {
-    dispatch(clearError());
-  }, [dispatch]);
 
   useEffect(() => {
     if (isAuthenticated) {

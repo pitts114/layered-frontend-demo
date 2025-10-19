@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import {
   Background,
@@ -11,7 +11,7 @@ import {
   Spinner,
 } from '@obm/ui-components';
 import { useAppSelector, useAppDispatch } from './store/hooks';
-import { selectIsAuthenticated, selectAuthLoading, logoutUser, checkAuth } from '@obm/domain';
+import { selectIsAuthenticated, selectAuthInitializing, logoutUser, checkAuth } from '@obm/domain';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { HomePage } from './pages/HomePage';
@@ -20,12 +20,16 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 function App() {
   const { isDark, toggleDarkMode } = useDarkMode();
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
-  const isLoading = useAppSelector(selectAuthLoading);
+  const isInitializing = useAppSelector(selectAuthInitializing);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const authCheckInitiated = useRef(false);
 
   useEffect(() => {
-    dispatch(checkAuth());
+    if (!authCheckInitiated.current) {
+      authCheckInitiated.current = true;
+      dispatch(checkAuth());
+    }
   }, [dispatch]);
 
   const handleLogout = async () => {
@@ -33,7 +37,7 @@ function App() {
     navigate('/login');
   };
 
-  if (isLoading) {
+  if (isInitializing) {
     return (
       <Background>
         <Flex align="center" justify="center" className="min-h-screen">

@@ -7,7 +7,6 @@ import {
   selectAuthLoading,
   selectAuthError,
   selectIsAuthenticated,
-  clearError,
 } from '@obm/domain';
 
 export const RegisterPage = () => {
@@ -16,10 +15,6 @@ export const RegisterPage = () => {
   const isLoading = useAppSelector(selectAuthLoading);
   const error = useAppSelector(selectAuthError);
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
-
-  useEffect(() => {
-    dispatch(clearError());
-  }, [dispatch]);
 
   useEffect(() => {
     if (isAuthenticated) {

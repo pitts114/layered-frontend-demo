@@ -12,6 +12,7 @@ export interface User {
 export interface AuthState {
   user: User | null;
   isLoading: boolean;
+  isInitializing: boolean;
   error: string | null;
   isAuthenticated: boolean;
 }
@@ -19,6 +20,7 @@ export interface AuthState {
 const initialState: AuthState = {
   user: null,
   isLoading: true,
+  isInitializing: true,
   error: null,
   isAuthenticated: false,
 };
@@ -161,6 +163,7 @@ const authSlice = createSlice({
       })
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isInitializing = false;
         state.user = {
           id: action.payload.id,
           email: action.payload.email,
@@ -171,6 +174,7 @@ const authSlice = createSlice({
       })
       .addCase(checkAuth.rejected, state => {
         state.isLoading = false;
+        state.isInitializing = false;
         state.user = null;
         state.isAuthenticated = false;
       });
@@ -181,6 +185,7 @@ const authSlice = createSlice({
 export const selectUser = (state: RootState) => state.auth.user;
 export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
 export const selectAuthLoading = (state: RootState) => state.auth.isLoading;
+export const selectAuthInitializing = (state: RootState) => state.auth.isInitializing;
 export const selectAuthError = (state: RootState) => state.auth.error;
 
 export const { clearError, logout, login } = authSlice.actions;
