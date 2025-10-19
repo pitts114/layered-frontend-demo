@@ -37,7 +37,7 @@ export const Heading: React.FC<HeadingProps> = ({
     right: 'text-right',
   };
 
-  const classes = `${sizeStyles[level]} ${weightStyles[weight]} ${alignStyles[align]} text-gray-900 ${className}`;
+  const classes = `${sizeStyles[level]} ${weightStyles[weight]} ${alignStyles[align]} text-gray-900 dark:text-gray-100 ${className}`;
 
   const headingProps = { className: classes, ...props };
 

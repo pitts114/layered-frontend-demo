@@ -50,8 +50,8 @@ export const Box: React.FC<BoxProps> = ({
   };
 
   const bgClasses = {
-    white: 'bg-white',
-    gray: 'bg-gray-100',
+    white: 'bg-white dark:bg-gray-900',
+    gray: 'bg-gray-100 dark:bg-gray-800',
     transparent: 'bg-transparent',
   };
 
@@ -77,7 +77,7 @@ export const Box: React.FC<BoxProps> = ({
     ${bg ? bgClasses[bg] : ''}
     ${roundedClasses[rounded]}
     ${shadowClasses[shadow]}
-    ${border ? 'border border-gray-300' : ''}
+    ${border ? 'border border-gray-300 dark:border-gray-600' : ''}
     ${className}
   `
     .trim()

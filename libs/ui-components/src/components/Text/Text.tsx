@@ -41,12 +41,12 @@ export const Text: React.FC<TextProps> = ({
   };
 
   const colorStyles = {
-    primary: 'text-gray-900',
-    secondary: 'text-gray-700',
-    muted: 'text-gray-500',
-    error: 'text-red-600',
-    success: 'text-green-600',
-    warning: 'text-yellow-600',
+    primary: 'text-gray-900 dark:text-gray-100',
+    secondary: 'text-gray-700 dark:text-gray-200',
+    muted: 'text-gray-500 dark:text-gray-400',
+    error: 'text-red-600 dark:text-red-400',
+    success: 'text-green-600 dark:text-green-400',
+    warning: 'text-yellow-600 dark:text-yellow-400',
   };
 
   const classes = `${variantStyles[variant]} ${weightStyles[weight]} ${alignStyles[align]} ${colorStyles[color]} ${className}`;

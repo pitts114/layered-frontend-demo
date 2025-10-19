@@ -39,7 +39,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
 
   return (
     <div
-      className={`bg-gray-200 ${variantStyles[variant]} ${animationStyles[animation]} ${className}`}
+      className={`bg-gray-200 dark:bg-gray-700 ${variantStyles[variant]} ${animationStyles[animation]} ${className}`}
       style={inlineStyles}
       aria-busy="true"
       aria-live="polite"

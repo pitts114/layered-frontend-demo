@@ -21,7 +21,7 @@ export const Divider: React.FC<DividerProps> = ({
   if (orientation === 'vertical') {
     return (
       <div
-        className={`inline-block w-px h-full bg-gray-300 ${spacingClasses[spacing]} ${className}`}
+        className={`inline-block w-px h-full bg-gray-300 dark:bg-gray-600 ${spacingClasses[spacing]} ${className}`}
         role="separator"
         aria-orientation="vertical"
         {...props}
@@ -31,7 +31,7 @@ export const Divider: React.FC<DividerProps> = ({
 
   return (
     <hr
-      className={`border-0 border-t border-gray-300 ${spacingClasses[spacing]} ${className}`}
+      className={`border-0 border-t border-gray-300 dark:border-gray-600 ${spacingClasses[spacing]} ${className}`}
       {...props}
     />
   );

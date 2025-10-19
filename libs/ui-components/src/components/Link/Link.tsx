@@ -14,9 +14,9 @@ export const Link: React.FC<LinkProps> = ({
   ...props
 }) => {
   const variantStyles = {
-    default: 'text-blue-600 hover:text-blue-800',
-    primary: 'text-blue-600 hover:text-blue-700 font-medium',
-    muted: 'text-gray-600 hover:text-gray-800',
+    default: 'text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300',
+    primary: 'text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium',
+    muted: 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200',
   };
 
   const underlineStyles = {

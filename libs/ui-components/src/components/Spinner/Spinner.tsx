@@ -14,9 +14,9 @@ export const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color = 'primary'
   };
 
   const colorClasses = {
-    primary: 'border-blue-200 border-t-blue-600',
+    primary: 'border-blue-200 dark:border-blue-800 border-t-blue-600 dark:border-t-blue-400',
     white: 'border-white/30 border-t-white',
-    gray: 'border-gray-200 border-t-gray-600',
+    gray: 'border-gray-200 dark:border-gray-700 border-t-gray-600 dark:border-t-gray-400',
   };
 
   return (

@@ -18,12 +18,12 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, error, isLoading
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg px-8 pt-6 pb-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
+      <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 pt-6 pb-8">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Login</h2>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
-            <p className="text-sm text-red-600">{error}</p>
+          <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">
+            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
           </div>
         )}
 
@@ -54,7 +54,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, error, isLoading
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-300 disabled:cursor-not-allowed transition-colors"
+          className="w-full bg-blue-600 dark:bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:bg-blue-300 dark:disabled:bg-blue-800 disabled:cursor-not-allowed transition-colors"
         >
           {isLoading ? 'Logging in...' : 'Login'}
         </button>
