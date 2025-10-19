@@ -4,21 +4,14 @@ import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import { vi } from 'vitest';
+import { mockDeep } from 'vitest-mock-extended';
 
 import { setupStore } from '@obm/domain';
 import type { AppStore, RootState, Services } from '@obm/domain';
+import type { ApiClient } from '@obm/api-client';
 
-// use mocking library to create a mock API client
-const createMockApiClient = () => ({
-  login: vi.fn(),
-  register: vi.fn(),
-  logout: vi.fn(),
-  get: vi.fn(),
-  post: vi.fn(),
-  put: vi.fn(),
-  delete: vi.fn(),
-});
+// use vitest-mock-extended to create a type-safe mock API client
+const createMockApiClient = () => mockDeep<ApiClient>();
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
@@ -35,10 +28,7 @@ export function renderWithProviders(
   {
     preloadedState = {},
     services,
-    store = setupStore(
-      services || ({ apiClient: createMockApiClient() } as Services),
-      preloadedState
-    ),
+    store = setupStore(services || { apiClient: createMockApiClient() }, preloadedState),
     initialRoutes = ['/'],
     withRouter = true,
     ...renderOptions
