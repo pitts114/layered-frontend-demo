@@ -36,7 +36,8 @@ describe('authSlice', () => {
       const state = store.getState().auth;
       expect(state).toEqual({
         user: null,
-        isLoading: false,
+        isLoading: true,
+        isInitializing: true,
         error: null,
         isAuthenticated: false,
       });
@@ -49,6 +50,7 @@ describe('authSlice', () => {
         auth: {
           user: null,
           isLoading: false,
+          isInitializing: false,
           error: 'Some error',
           isAuthenticated: false,
         },
@@ -65,6 +67,7 @@ describe('authSlice', () => {
         auth: {
           user: { id: 1, email: 'test@example.com' },
           isLoading: false,
+          isInitializing: false,
           error: null,
           isAuthenticated: true,
         },
@@ -76,6 +79,7 @@ describe('authSlice', () => {
       expect(state).toEqual({
         user: null,
         isLoading: false,
+          isInitializing: false,
         error: null,
         isAuthenticated: false,
       });
@@ -98,6 +102,7 @@ describe('authSlice', () => {
         auth: {
           user: null,
           isLoading: false,
+          isInitializing: false,
           error: 'Previous error',
           isAuthenticated: false,
         },
@@ -117,6 +122,7 @@ describe('authSlice', () => {
         auth: {
           user: null,
           isLoading: true,
+          isInitializing: true,
           error: null,
           isAuthenticated: false,
         },
@@ -250,6 +256,7 @@ describe('authSlice', () => {
         auth: {
           user: { id: 1, email: 'test@example.com' },
           isLoading: false,
+          isInitializing: false,
           error: null,
           isAuthenticated: true,
         },
@@ -275,6 +282,7 @@ describe('authSlice', () => {
         auth: {
           user: { id: 1, email: 'test@example.com' },
           isLoading: false,
+          isInitializing: false,
           error: null,
           isAuthenticated: true,
         },
@@ -350,6 +358,7 @@ describe('authSlice', () => {
         auth: {
           user: { id: 1, email: 'test@example.com' },
           isLoading: false,
+          isInitializing: false,
           error: null,
           isAuthenticated: true,
         },
@@ -363,6 +372,7 @@ describe('authSlice', () => {
         auth: {
           user: { id: 1, email: 'test@example.com' },
           isLoading: false,
+          isInitializing: false,
           error: null,
           isAuthenticated: true,
         },
@@ -376,6 +386,7 @@ describe('authSlice', () => {
         auth: {
           user: null,
           isLoading: true,
+          isInitializing: true,
           error: null,
           isAuthenticated: false,
         },
@@ -389,6 +400,7 @@ describe('authSlice', () => {
         auth: {
           user: null,
           isLoading: false,
+          isInitializing: false,
           error: 'Some error message',
           isAuthenticated: false,
         },
