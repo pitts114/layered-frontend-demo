@@ -1,4 +1,4 @@
-export { store, setupStore } from './store';
+export { setupStore } from './store';
 export type { RootState, AppStore, AppDispatch } from './store';
 export type { Services } from './services';
 export { increment, decrement, selectCount } from './features/counter/counterSlice';
