@@ -1,9 +1,9 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState } from 'react';
 
 export interface RegisterFormProps {
-  onSubmit: (email: string, password: string, passwordConfirmation: string) => void
-  error?: string
-  isLoading?: boolean
+  onSubmit: (email: string, password: string, passwordConfirmation: string) => void;
+  error?: string;
+  isLoading?: boolean;
 }
 
 export const RegisterForm: React.FC<RegisterFormProps> = ({
@@ -11,23 +11,23 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
   error,
   isLoading = false,
 }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordConfirmation, setPasswordConfirmation] = useState('')
-  const [passwordMismatch, setPasswordMismatch] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [passwordMismatch, setPasswordMismatch] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Basic client-side check that passwords match
     if (password !== passwordConfirmation) {
-      setPasswordMismatch(true)
-      return
+      setPasswordMismatch(true);
+      return;
     }
 
-    setPasswordMismatch(false)
-    onSubmit(email, password, passwordConfirmation)
-  }
+    setPasswordMismatch(false);
+    onSubmit(email, password, passwordConfirmation);
+  };
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -54,7 +54,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             disabled={isLoading}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
@@ -69,9 +69,9 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
             id="password"
             type="password"
             value={password}
-            onChange={(e) => {
-              setPassword(e.target.value)
-              setPasswordMismatch(false)
+            onChange={e => {
+              setPassword(e.target.value);
+              setPasswordMismatch(false);
             }}
             disabled={isLoading}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
@@ -80,16 +80,19 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         </div>
 
         <div className="mb-6">
-          <label htmlFor="passwordConfirmation" className="block text-gray-700 text-sm font-semibold mb-2">
+          <label
+            htmlFor="passwordConfirmation"
+            className="block text-gray-700 text-sm font-semibold mb-2"
+          >
             Confirm Password
           </label>
           <input
             id="passwordConfirmation"
             type="password"
             value={passwordConfirmation}
-            onChange={(e) => {
-              setPasswordConfirmation(e.target.value)
-              setPasswordMismatch(false)
+            onChange={e => {
+              setPasswordConfirmation(e.target.value);
+              setPasswordMismatch(false);
             }}
             disabled={isLoading}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
@@ -106,5 +109,5 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         </button>
       </form>
     </div>
-  )
-}
+  );
+};

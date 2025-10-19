@@ -1,23 +1,19 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState } from 'react';
 
 export interface LoginFormProps {
-  onSubmit: (email: string, password: string) => void
-  error?: string
-  isLoading?: boolean
+  onSubmit: (email: string, password: string) => void;
+  error?: string;
+  isLoading?: boolean;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({
-  onSubmit,
-  error,
-  isLoading = false,
-}) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, error, isLoading = false }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    onSubmit(email, password)
-  }
+    e.preventDefault();
+    onSubmit(email, password);
+  };
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -38,7 +34,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             disabled={isLoading}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
@@ -53,7 +49,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             id="password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             disabled={isLoading}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             required
@@ -69,5 +65,5 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
