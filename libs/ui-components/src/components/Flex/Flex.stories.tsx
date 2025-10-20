@@ -13,7 +13,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const FlexItem = ({ children }: { children: React.ReactNode }) => (
+const DemoItem = ({ children }: { children: React.ReactNode }) => (
   <div className="bg-blue-100 border border-blue-300 rounded p-4">{children}</div>
 );
 
@@ -23,9 +23,9 @@ export const Row: Story = {
     gap: 4,
     children: (
       <>
-        <FlexItem>Item 1</FlexItem>
-        <FlexItem>Item 2</FlexItem>
-        <FlexItem>Item 3</FlexItem>
+        <DemoItem>Item 1</DemoItem>
+        <DemoItem>Item 2</DemoItem>
+        <DemoItem>Item 3</DemoItem>
       </>
     ),
   },
@@ -37,9 +37,9 @@ export const Column: Story = {
     gap: 4,
     children: (
       <>
-        <FlexItem>Item 1</FlexItem>
-        <FlexItem>Item 2</FlexItem>
-        <FlexItem>Item 3</FlexItem>
+        <DemoItem>Item 1</DemoItem>
+        <DemoItem>Item 2</DemoItem>
+        <DemoItem>Item 3</DemoItem>
       </>
     ),
   },
@@ -54,8 +54,8 @@ export const CenterBoth: Story = {
     className: 'h-64 bg-gray-50',
     children: (
       <>
-        <FlexItem>Centered</FlexItem>
-        <FlexItem>Content</FlexItem>
+        <DemoItem>Centered</DemoItem>
+        <DemoItem>Content</DemoItem>
       </>
     ),
   },
@@ -69,8 +69,8 @@ export const SpaceBetween: Story = {
     className: 'w-full',
     children: (
       <>
-        <FlexItem>Left</FlexItem>
-        <FlexItem>Right</FlexItem>
+        <DemoItem>Left</DemoItem>
+        <DemoItem>Right</DemoItem>
       </>
     ),
   },
@@ -84,11 +84,11 @@ export const Wrap: Story = {
     className: 'w-64',
     children: (
       <>
-        <FlexItem>Item 1</FlexItem>
-        <FlexItem>Item 2</FlexItem>
-        <FlexItem>Item 3</FlexItem>
-        <FlexItem>Item 4</FlexItem>
-        <FlexItem>Item 5</FlexItem>
+        <DemoItem>Item 1</DemoItem>
+        <DemoItem>Item 2</DemoItem>
+        <DemoItem>Item 3</DemoItem>
+        <DemoItem>Item 4</DemoItem>
+        <DemoItem>Item 5</DemoItem>
       </>
     ),
   },
@@ -100,33 +100,33 @@ export const AlignmentVariations: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-2">Align Start</h3>
         <Flex align="start" gap={4} className="h-32 bg-gray-50">
-          <FlexItem>Short</FlexItem>
-          <FlexItem>
+          <DemoItem>Short</DemoItem>
+          <DemoItem>
             Tall
             <br />
             Item
-          </FlexItem>
-          <FlexItem>Short</FlexItem>
+          </DemoItem>
+          <DemoItem>Short</DemoItem>
         </Flex>
       </div>
       <div>
         <h3 className="text-lg font-semibold mb-2">Align Center</h3>
         <Flex align="center" gap={4} className="h-32 bg-gray-50">
-          <FlexItem>Short</FlexItem>
-          <FlexItem>
+          <DemoItem>Short</DemoItem>
+          <DemoItem>
             Tall
             <br />
             Item
-          </FlexItem>
-          <FlexItem>Short</FlexItem>
+          </DemoItem>
+          <DemoItem>Short</DemoItem>
         </Flex>
       </div>
       <div>
         <h3 className="text-lg font-semibold mb-2">Align Stretch</h3>
         <Flex align="stretch" gap={4} className="h-32 bg-gray-50">
-          <FlexItem>Short</FlexItem>
-          <FlexItem>Stretched</FlexItem>
-          <FlexItem>Short</FlexItem>
+          <DemoItem>Short</DemoItem>
+          <DemoItem>Stretched</DemoItem>
+          <DemoItem>Short</DemoItem>
         </Flex>
       </div>
     </div>

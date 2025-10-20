@@ -1,7 +1,13 @@
 import React from 'react';
 
+type FlexDirection = 'row' | 'col' | 'row-reverse' | 'col-reverse';
+
 export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
-  direction?: 'row' | 'col' | 'row-reverse' | 'col-reverse';
+  direction?: FlexDirection;
+  sm?: FlexDirection;
+  md?: FlexDirection;
+  lg?: FlexDirection;
+  xl?: FlexDirection;
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
   wrap?: boolean | 'reverse';
@@ -11,6 +17,10 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Flex: React.FC<FlexProps> = ({
   direction = 'row',
+  sm,
+  md,
+  lg,
+  xl,
   align,
   justify,
   wrap = false,
@@ -24,6 +34,34 @@ export const Flex: React.FC<FlexProps> = ({
     col: 'flex-col',
     'row-reverse': 'flex-row-reverse',
     'col-reverse': 'flex-col-reverse',
+  };
+
+  const smDirectionClasses = {
+    row: 'sm:flex-row',
+    col: 'sm:flex-col',
+    'row-reverse': 'sm:flex-row-reverse',
+    'col-reverse': 'sm:flex-col-reverse',
+  };
+
+  const mdDirectionClasses = {
+    row: 'md:flex-row',
+    col: 'md:flex-col',
+    'row-reverse': 'md:flex-row-reverse',
+    'col-reverse': 'md:flex-col-reverse',
+  };
+
+  const lgDirectionClasses = {
+    row: 'lg:flex-row',
+    col: 'lg:flex-col',
+    'row-reverse': 'lg:flex-row-reverse',
+    'col-reverse': 'lg:flex-col-reverse',
+  };
+
+  const xlDirectionClasses = {
+    row: 'xl:flex-row',
+    col: 'xl:flex-col',
+    'row-reverse': 'xl:flex-row-reverse',
+    'col-reverse': 'xl:flex-col-reverse',
   };
 
   const alignClasses = {
@@ -61,6 +99,10 @@ export const Flex: React.FC<FlexProps> = ({
   const classes = `
     flex
     ${directionClasses[direction]}
+    ${sm ? smDirectionClasses[sm] : ''}
+    ${md ? mdDirectionClasses[md] : ''}
+    ${lg ? lgDirectionClasses[lg] : ''}
+    ${xl ? xlDirectionClasses[xl] : ''}
     ${align ? alignClasses[align] : ''}
     ${justify ? justifyClasses[justify] : ''}
     ${wrapClass}
