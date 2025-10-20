@@ -1,0 +1,25 @@
+{
+  "name": "client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/client/src",
+  "projectType": "application",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm install",
+        "cwd": "apps/client"
+      },
+      "dependsOn": ["^build"]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run build",
+        "cwd": "apps/client"
+      },
+      "dependsOn": ["install"]
+    }
+  },
+  "implicitDependencies": ["@obm/ui-components", "@obm/domain", "@obm/api-client"]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@obm/domain",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/domain/src",
+  "projectType": "library",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm install",
+        "cwd": "libs/domain"
+      },
+      "dependsOn": ["^build"]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run build",
+        "cwd": "libs/domain"
+      },
+      "dependsOn": ["install"]
+    }
+  },
+  "implicitDependencies": ["@obm/api-client"]
+}
