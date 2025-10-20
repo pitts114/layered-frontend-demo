@@ -4,7 +4,7 @@ export function TestPage() {
   return (
     <Box className="min-h-screen p-4 md:p-8">
       <Box className="max-w-6xl mx-auto">
-        <Text variant="h1" className="mb-2">
+        <Text variant="body1" weight="bold" className="text-3xl md:text-4xl lg:text-5xl mb-2">
           Responsive UI Components
         </Text>
         <Text variant="body1" color="muted" className="mb-12">
@@ -13,7 +13,7 @@ export function TestPage() {
 
         {/* Example 1: Responsive Card Grid */}
         <Box className="mb-16">
-          <Text variant="h2" className="mb-4">
+          <Text variant="body1" weight="semibold" className="text-2xl mb-4">
             Example 1: Responsive Card Grid
           </Text>
           <Text variant="body1" color="muted" className="mb-6">
@@ -22,17 +22,18 @@ export function TestPage() {
 
           <Grid cols={1} md={2} lg={3} gap={4}>
             {[1, 2, 3, 4, 5, 6].map((num) => (
-              <Card key={num} className="p-6">
-                <Box className="w-full h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md mb-4" />
-                <Text variant="h3" className="mb-2">
-                  Card {num}
-                </Text>
-                <Text variant="body2" color="muted" className="mb-4">
-                  This card adapts to different screen sizes using responsive grid classes.
-                </Text>
-                <Button variant="primary" size="sm">
-                  Learn More
-                </Button>
+              <Card key={num} padding="none">
+                <Flex direction="col" className="p-6 h-full">
+                  <Text variant="body1" weight="semibold" className="text-lg mb-2">
+                    Card {num}
+                  </Text>
+                  <Text variant="body2" color="muted" className="mb-4">
+                    This card adapts to different screen sizes using responsive grid classes.
+                  </Text>
+                  <Button variant="primary" size="small">
+                    Learn More
+                  </Button>
+                </Flex>
               </Card>
             ))}
           </Grid>
@@ -40,7 +41,7 @@ export function TestPage() {
 
         {/* Example 2: Responsive Flex Layout */}
         <Box className="mb-16">
-          <Text variant="h2" className="mb-4">
+          <Text variant="body1" weight="semibold" className="text-2xl mb-4">
             Example 2: Responsive Flex Layout
           </Text>
           <Text variant="body1" color="muted" className="mb-6">
@@ -48,7 +49,7 @@ export function TestPage() {
           </Text>
 
           <Card className="p-4 md:p-8 lg:p-12">
-            <Text variant="h3" className="mb-3 md:mb-4 lg:mb-6">
+            <Text variant="body1" weight="semibold" className="text-xl md:text-2xl lg:text-3xl mb-3 md:mb-4 lg:mb-6">
               Responsive Heading
             </Text>
             <Text variant="body1" color="muted" className="mb-4 md:mb-6 lg:mb-8">
@@ -58,10 +59,10 @@ export function TestPage() {
             </Text>
 
             <Flex direction="col" sm="row" gap={3}>
-              <Button variant="primary" size="md">
+              <Button variant="primary" size="medium">
                 Primary Action
               </Button>
-              <Button variant="secondary" size="md">
+              <Button variant="secondary" size="medium">
                 Secondary Action
               </Button>
             </Flex>
@@ -70,7 +71,7 @@ export function TestPage() {
 
         {/* Example 3: Nested Flex Layouts */}
         <Box className="mb-16">
-          <Text variant="h2" className="mb-4">
+          <Text variant="body1" weight="semibold" className="text-2xl mb-4">
             Example 3: Nested Flex Layouts
           </Text>
           <Text variant="body1" color="muted" className="mb-6">
@@ -81,40 +82,40 @@ export function TestPage() {
             <Flex direction="col" gap={4}>
               {/* Header */}
               <Flex justify="between" align="center" className="pb-4 border-b border-gray-200 dark:border-gray-700">
-                <Text variant="h3">Dashboard Stats</Text>
-                <Button variant="secondary" size="sm">
+                <Text variant="body1" weight="semibold" className="text-xl">Dashboard Stats</Text>
+                <Button variant="secondary" size="small">
                   Refresh
                 </Button>
               </Flex>
 
               {/* Stats Grid - stacks on mobile, 3 columns on tablet+ */}
               <Grid cols={1} sm={3} gap={4}>
-                <Card variant="outlined" className="p-4">
+                <Card className="p-4 border border-gray-200 dark:border-gray-700">
                   <Text variant="body2" color="muted" className="mb-1">
                     Total Users
                   </Text>
-                  <Text variant="h2">1,234</Text>
+                  <Text variant="body1" weight="bold" className="text-2xl">1,234</Text>
                 </Card>
-                <Card variant="outlined" className="p-4">
+                <Card className="p-4 border border-gray-200 dark:border-gray-700">
                   <Text variant="body2" color="muted" className="mb-1">
                     Active Sessions
                   </Text>
-                  <Text variant="h2">456</Text>
+                  <Text variant="body1" weight="bold" className="text-2xl">456</Text>
                 </Card>
-                <Card variant="outlined" className="p-4">
+                <Card className="p-4 border border-gray-200 dark:border-gray-700">
                   <Text variant="body2" color="muted" className="mb-1">
                     Revenue
                   </Text>
-                  <Text variant="h2">$78.9k</Text>
+                  <Text variant="body1" weight="bold" className="text-2xl">$78.9k</Text>
                 </Card>
               </Grid>
 
               {/* Actions - stack on mobile, inline on tablet+ */}
               <Flex direction="col" sm="row" gap={3} justify="end">
-                <Button variant="secondary" size="md">
+                <Button variant="secondary" size="medium">
                   Export Data
                 </Button>
-                <Button variant="primary" size="md">
+                <Button variant="primary" size="medium">
                   View Details
                 </Button>
               </Flex>
