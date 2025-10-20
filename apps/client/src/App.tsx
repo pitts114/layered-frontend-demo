@@ -7,6 +7,7 @@ import { useDarkMode } from './hooks';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { HomePage } from './pages/HomePage';
+import { TestPage } from './pages/TestPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/test" element={<TestPage />} />
         <Route
           path="/"
           element={
