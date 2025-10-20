@@ -8,7 +8,7 @@ describe('Grid', () => {
       <Grid>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Grid>,
+      </Grid>
     );
     expect(screen.getByText('Item 1')).toBeInTheDocument();
     expect(screen.getByText('Item 2')).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe('Grid', () => {
     const { container } = render(
       <Grid>
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(container.firstChild).toHaveClass('grid');
   });
@@ -27,14 +27,14 @@ describe('Grid', () => {
     const { container, rerender } = render(
       <Grid cols={2}>
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(container.firstChild).toHaveClass('grid-cols-2');
 
     rerender(
       <Grid cols={4}>
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(container.firstChild).toHaveClass('grid-cols-4');
   });
@@ -43,14 +43,14 @@ describe('Grid', () => {
     const { container, rerender } = render(
       <Grid gap={4}>
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(container.firstChild).toHaveClass('gap-4');
 
     rerender(
       <Grid gap={8}>
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(container.firstChild).toHaveClass('gap-8');
   });
@@ -59,7 +59,7 @@ describe('Grid', () => {
     const { container } = render(
       <Grid>
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(container.firstChild).toHaveClass('grid-cols-1', 'gap-4');
   });
@@ -68,7 +68,7 @@ describe('Grid', () => {
     const { container } = render(
       <Grid className="custom-class">
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(container.firstChild).toHaveClass('custom-class');
   });
@@ -77,7 +77,7 @@ describe('Grid', () => {
     render(
       <Grid data-testid="grid-element">
         <div>Item</div>
-      </Grid>,
+      </Grid>
     );
     expect(screen.getByTestId('grid-element')).toBeInTheDocument();
   });

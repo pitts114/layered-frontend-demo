@@ -37,7 +37,9 @@ export const Card: Story = {
     children: (
       <div>
         <h3 className="text-xl font-bold mb-2">Card Title</h3>
-        <p className="text-gray-600">This box looks like a card with shadow, border, and rounded corners.</p>
+        <p className="text-gray-600">
+          This box looks like a card with shadow, border, and rounded corners.
+        </p>
       </div>
     ),
   },
@@ -77,7 +79,12 @@ export const RoundedVariations: Story = {
       <Box padding={4} bg="gray" rounded="lg">
         Rounded: Large
       </Box>
-      <Box padding={4} bg="gray" rounded="full" className="w-32 h-32 flex items-center justify-center">
+      <Box
+        padding={4}
+        bg="gray"
+        rounded="full"
+        className="w-32 h-32 flex items-center justify-center"
+      >
         Full
       </Box>
     </div>

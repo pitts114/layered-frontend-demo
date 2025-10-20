@@ -7,7 +7,14 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   fallback?: string;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ src, alt = 'Avatar', size = 'md', fallback, className = '', ...props }) => {
+export const Avatar: React.FC<AvatarProps> = ({
+  src,
+  alt = 'Avatar',
+  size = 'md',
+  fallback,
+  className = '',
+  ...props
+}) => {
   const sizeClasses = {
     sm: 'w-8 h-8 text-xs',
     md: 'w-12 h-12 text-sm',
@@ -19,11 +26,21 @@ export const Avatar: React.FC<AvatarProps> = ({ src, alt = 'Avatar', size = 'md'
   const showFallback = !src || imageError;
 
   return (
-    <div className={`inline-flex items-center justify-center bg-gray-300 dark:bg-gray-600 rounded-full overflow-hidden ${sizeClasses[size]} ${className}`} {...props}>
+    <div
+      className={`inline-flex items-center justify-center bg-gray-300 dark:bg-gray-600 rounded-full overflow-hidden ${sizeClasses[size]} ${className}`}
+      {...props}
+    >
       {showFallback ? (
-        <span className="font-semibold text-gray-600 dark:text-gray-300">{fallback || alt.charAt(0).toUpperCase()}</span>
+        <span className="font-semibold text-gray-600 dark:text-gray-300">
+          {fallback || alt.charAt(0).toUpperCase()}
+        </span>
       ) : (
-        <img src={src} alt={alt} className="w-full h-full object-cover" onError={() => setImageError(true)} />
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover"
+          onError={() => setImageError(true)}
+        />
       )}
     </div>
   );

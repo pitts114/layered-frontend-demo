@@ -28,13 +28,22 @@ export const WithCenterContent: Story = {
     left: <div className="font-semibold text-lg">My App</div>,
     center: (
       <div className="flex gap-4">
-        <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+        <a
+          href="#"
+          className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+        >
           Home
         </a>
-        <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+        <a
+          href="#"
+          className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+        >
           About
         </a>
-        <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+        <a
+          href="#"
+          className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+        >
           Contact
         </a>
       </div>
@@ -77,13 +86,22 @@ export const Complex: Story = {
         left={<div className="font-semibold text-lg text-blue-600 dark:text-blue-400">My App</div>}
         center={
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <a
+              href="#"
+              className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+            >
               Dashboard
             </a>
-            <a href="#" className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <a
+              href="#"
+              className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+            >
               Projects
             </a>
-            <a href="#" className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+            <a
+              href="#"
+              className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+            >
               Team
             </a>
           </div>

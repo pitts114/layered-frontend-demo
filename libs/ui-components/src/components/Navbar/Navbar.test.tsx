@@ -25,13 +25,7 @@ describe('Navbar', () => {
     });
 
     it('renders all content sections together', () => {
-      render(
-        <Navbar
-          left={<div>Left</div>}
-          center={<div>Center</div>}
-          right={<div>Right</div>}
-        />
-      );
+      render(<Navbar left={<div>Left</div>} center={<div>Center</div>} right={<div>Right</div>} />);
       expect(screen.getByText('Left')).toBeInTheDocument();
       expect(screen.getByText('Center')).toBeInTheDocument();
       expect(screen.getByText('Right')).toBeInTheDocument();

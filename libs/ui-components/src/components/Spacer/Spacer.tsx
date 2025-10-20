@@ -5,7 +5,12 @@ export interface SpacerProps extends React.HTMLAttributes<HTMLDivElement> {
   axis?: 'horizontal' | 'vertical' | 'both';
 }
 
-export const Spacer: React.FC<SpacerProps> = ({ size = 4, axis = 'vertical', className = '', ...props }) => {
+export const Spacer: React.FC<SpacerProps> = ({
+  size = 4,
+  axis = 'vertical',
+  className = '',
+  ...props
+}) => {
   const sizeClasses = {
     1: 1,
     2: 2,

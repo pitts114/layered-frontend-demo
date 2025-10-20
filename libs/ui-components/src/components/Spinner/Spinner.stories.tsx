@@ -20,7 +20,9 @@ export const Colors: Story = {
   render: () => (
     <div className="flex gap-4 items-center">
       <Spinner color="primary" />
-      <div className="bg-gray-800 p-4 rounded"><Spinner color="white" /></div>
+      <div className="bg-gray-800 p-4 rounded">
+        <Spinner color="white" />
+      </div>
       <Spinner color="gray" />
     </div>
   ),

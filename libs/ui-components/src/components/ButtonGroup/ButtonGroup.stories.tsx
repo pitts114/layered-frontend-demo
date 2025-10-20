@@ -2,7 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ButtonGroup } from './ButtonGroup';
 import { Button } from '../Button';
 
-const meta = { title: 'Interactive/ButtonGroup', component: ButtonGroup, parameters: { layout: 'centered' }, tags: ['autodocs'] } satisfies Meta<typeof ButtonGroup>;
+const meta = {
+  title: 'Interactive/ButtonGroup',
+  component: ButtonGroup,
+  parameters: { layout: 'centered' },
+  tags: ['autodocs'],
+} satisfies Meta<typeof ButtonGroup>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

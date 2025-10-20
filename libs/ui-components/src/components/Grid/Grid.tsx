@@ -93,7 +93,9 @@ export const Grid: React.FC<GridProps> = ({
     ${xl ? xlColsClasses[xl] : ''}
     ${gapClasses[gap]}
     ${className}
-  `.trim().replace(/\s+/g, ' ');
+  `
+    .trim()
+    .replace(/\s+/g, ' ');
 
   return (
     <div className={classes} {...props}>

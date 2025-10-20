@@ -33,7 +33,11 @@ export const Toast: React.FC<ToastProps> = ({
         <div className="text-sm">{children}</div>
       </div>
       {onClose && (
-        <button onClick={onClose} className="flex-shrink-0 text-lg hover:opacity-70" aria-label="Close">
+        <button
+          onClick={onClose}
+          className="flex-shrink-0 text-lg hover:opacity-70"
+          aria-label="Close"
+        >
           ×
         </button>
       )}

@@ -34,7 +34,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <div className={`w-full ${className}`} {...props}>
-      <div className={`w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden ${sizeStyles[size]}`}>
+      <div
+        className={`w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden ${sizeStyles[size]}`}
+      >
         <div
           className={`h-full ${variantStyles[variant]} transition-all duration-300`}
           style={{ width: `${percentage}%` }}
@@ -44,7 +46,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           aria-valuemax={max}
         />
       </div>
-      {showLabel && <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{Math.round(percentage)}%</p>}
+      {showLabel && (
+        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{Math.round(percentage)}%</p>
+      )}
     </div>
   );
 };

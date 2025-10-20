@@ -5,7 +5,14 @@ export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   helperText?: string;
 }
 
-export const Radio: React.FC<RadioProps> = ({ label, helperText, id, className = '', disabled, ...props }) => {
+export const Radio: React.FC<RadioProps> = ({
+  label,
+  helperText,
+  id,
+  className = '',
+  disabled,
+  ...props
+}) => {
   const radioId = id || `radio-${Math.random().toString(36).substr(2, 9)}`;
 
   return (
@@ -19,12 +26,17 @@ export const Radio: React.FC<RadioProps> = ({ label, helperText, id, className =
           {...props}
         />
         {label && (
-          <label htmlFor={radioId} className="ml-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer select-none">
+          <label
+            htmlFor={radioId}
+            className="ml-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer select-none"
+          >
             {label}
           </label>
         )}
       </div>
-      {helperText && <p className="mt-1 ml-6 text-sm text-gray-500 dark:text-gray-400">{helperText}</p>}
+      {helperText && (
+        <p className="mt-1 ml-6 text-sm text-gray-500 dark:text-gray-400">{helperText}</p>
+      )}
     </div>
   );
 };

@@ -28,13 +28,18 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           {...props}
         />
         {label && (
-          <label htmlFor={checkboxId} className="ml-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer select-none">
+          <label
+            htmlFor={checkboxId}
+            className="ml-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer select-none"
+          >
             {label}
           </label>
         )}
       </div>
       {error && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{error}</p>}
-      {helperText && !error && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{helperText}</p>}
+      {helperText && !error && (
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{helperText}</p>
+      )}
     </div>
   );
 };

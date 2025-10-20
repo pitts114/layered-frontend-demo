@@ -61,7 +61,12 @@ export const Disabled: Story = {
 export const ResizeOptions: Story = {
   render: () => (
     <div className="space-y-6 w-96">
-      <Textarea label="Resize Vertical (default)" resize="vertical" placeholder="Resize vertically" rows={3} />
+      <Textarea
+        label="Resize Vertical (default)"
+        resize="vertical"
+        placeholder="Resize vertically"
+        rows={3}
+      />
       <Textarea label="Resize None" resize="none" placeholder="Cannot resize" rows={3} />
       <Textarea label="Resize Both" resize="both" placeholder="Resize both directions" rows={3} />
     </div>

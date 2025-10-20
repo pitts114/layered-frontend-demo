@@ -5,7 +5,12 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: 'primary' | 'white' | 'gray';
 }
 
-export const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color = 'primary', className = '', ...props }) => {
+export const Spinner: React.FC<SpinnerProps> = ({
+  size = 'md',
+  color = 'primary',
+  className = '',
+  ...props
+}) => {
   const sizeClasses = {
     sm: 'w-4 h-4 border-2',
     md: 'w-8 h-8 border-2',

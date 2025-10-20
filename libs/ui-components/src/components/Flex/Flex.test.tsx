@@ -8,7 +8,7 @@ describe('Flex', () => {
       <Flex>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Flex>,
+      </Flex>
     );
     expect(screen.getByText('Item 1')).toBeInTheDocument();
     expect(screen.getByText('Item 2')).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe('Flex', () => {
     const { container } = render(
       <Flex>
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('flex');
   });
@@ -27,14 +27,14 @@ describe('Flex', () => {
     const { container, rerender } = render(
       <Flex direction="row">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('flex-row');
 
     rerender(
       <Flex direction="col">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('flex-col');
   });
@@ -43,14 +43,14 @@ describe('Flex', () => {
     const { container, rerender } = render(
       <Flex align="center">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('items-center');
 
     rerender(
       <Flex align="start">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('items-start');
   });
@@ -59,14 +59,14 @@ describe('Flex', () => {
     const { container, rerender } = render(
       <Flex justify="center">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('justify-center');
 
     rerender(
       <Flex justify="between">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('justify-between');
   });
@@ -75,14 +75,14 @@ describe('Flex', () => {
     const { container, rerender } = render(
       <Flex wrap={true}>
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('flex-wrap');
 
     rerender(
       <Flex wrap="reverse">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('flex-wrap-reverse');
   });
@@ -91,7 +91,7 @@ describe('Flex', () => {
     const { container } = render(
       <Flex gap={4}>
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('gap-4');
   });
@@ -100,7 +100,7 @@ describe('Flex', () => {
     const { container } = render(
       <Flex className="custom-class">
         <div>Item</div>
-      </Flex>,
+      </Flex>
     );
     expect(container.firstChild).toHaveClass('custom-class');
   });

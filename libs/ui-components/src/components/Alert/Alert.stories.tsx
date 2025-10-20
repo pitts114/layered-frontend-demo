@@ -28,7 +28,11 @@ export const Error: Story = {
 };
 
 export const WithTitle: Story = {
-  args: { variant: 'info', title: 'Information', children: 'This alert has a title for extra context.' },
+  args: {
+    variant: 'info',
+    title: 'Information',
+    children: 'This alert has a title for extra context.',
+  },
 };
 
 export const Dismissible: Story = {
@@ -43,10 +47,18 @@ export const Dismissible: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div className="space-y-4">
-      <Alert variant="info" title="Information">This is an info alert with a title</Alert>
-      <Alert variant="success" title="Success">Operation completed successfully</Alert>
-      <Alert variant="warning" title="Warning">Please be careful with this action</Alert>
-      <Alert variant="error" title="Error">Something went wrong</Alert>
+      <Alert variant="info" title="Information">
+        This is an info alert with a title
+      </Alert>
+      <Alert variant="success" title="Success">
+        Operation completed successfully
+      </Alert>
+      <Alert variant="warning" title="Warning">
+        Please be careful with this action
+      </Alert>
+      <Alert variant="error" title="Error">
+        Something went wrong
+      </Alert>
     </div>
   ),
 };

@@ -38,7 +38,11 @@ export const WithoutLabel: Story = {
 export const MultipleSwitches: Story = {
   render: () => (
     <div className="space-y-4">
-      <Switch label="Email notifications" defaultChecked helperText="Receive emails about your account" />
+      <Switch
+        label="Email notifications"
+        defaultChecked
+        helperText="Receive emails about your account"
+      />
       <Switch label="Push notifications" helperText="Receive push notifications on your device" />
       <Switch label="SMS notifications" defaultChecked />
       <Switch label="Marketing emails (disabled)" disabled />

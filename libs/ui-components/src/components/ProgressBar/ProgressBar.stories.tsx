@@ -20,9 +20,18 @@ export const Error: Story = { args: { value: 20, variant: 'error' } };
 export const Sizes: Story = {
   render: () => (
     <div className="space-y-4 w-96">
-      <div><p className="text-sm mb-1">Small</p><ProgressBar value={60} size="sm" /></div>
-      <div><p className="text-sm mb-1">Medium</p><ProgressBar value={60} size="md" /></div>
-      <div><p className="text-sm mb-1">Large</p><ProgressBar value={60} size="lg" /></div>
+      <div>
+        <p className="text-sm mb-1">Small</p>
+        <ProgressBar value={60} size="sm" />
+      </div>
+      <div>
+        <p className="text-sm mb-1">Medium</p>
+        <ProgressBar value={60} size="md" />
+      </div>
+      <div>
+        <p className="text-sm mb-1">Large</p>
+        <ProgressBar value={60} size="lg" />
+      </div>
     </div>
   ),
 };

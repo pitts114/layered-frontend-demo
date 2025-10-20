@@ -32,8 +32,13 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 pt-6 pb-8">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Register</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 pt-6 pb-8"
+      >
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">
+          Register
+        </h2>
 
         {error && (
           <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">

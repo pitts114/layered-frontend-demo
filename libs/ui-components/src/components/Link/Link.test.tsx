@@ -22,14 +22,14 @@ describe('Link', () => {
     const { rerender } = render(
       <Link href="#" variant="default">
         Link
-      </Link>,
+      </Link>
     );
     expect(screen.getByText('Link')).toHaveClass('text-blue-600');
 
     rerender(
       <Link href="#" variant="muted">
         Link
-      </Link>,
+      </Link>
     );
     expect(screen.getByText('Link')).toHaveClass('text-gray-600');
   });
@@ -38,21 +38,21 @@ describe('Link', () => {
     const { rerender } = render(
       <Link href="#" underline="none">
         Link
-      </Link>,
+      </Link>
     );
     expect(screen.getByText('Link')).toHaveClass('no-underline');
 
     rerender(
       <Link href="#" underline="always">
         Link
-      </Link>,
+      </Link>
     );
     expect(screen.getByText('Link')).toHaveClass('underline');
 
     rerender(
       <Link href="#" underline="hover">
         Link
-      </Link>,
+      </Link>
     );
     expect(screen.getByText('Link')).toHaveClass('hover:underline');
   });
@@ -61,7 +61,7 @@ describe('Link', () => {
     render(
       <Link href="#" className="custom-class">
         Link
-      </Link>,
+      </Link>
     );
     expect(screen.getByText('Link')).toHaveClass('custom-class');
   });
@@ -70,7 +70,7 @@ describe('Link', () => {
     render(
       <Link href="#" target="_blank" rel="noopener">
         Link
-      </Link>,
+      </Link>
     );
     const link = screen.getByText('Link');
     expect(link).toHaveAttribute('target', '_blank');
@@ -81,7 +81,7 @@ describe('Link', () => {
     render(
       <Link href="#" data-testid="test-link">
         Link
-      </Link>,
+      </Link>
     );
     expect(screen.getByTestId('test-link')).toBeInTheDocument();
   });

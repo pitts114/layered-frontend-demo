@@ -23,7 +23,9 @@ export const WithError: Story = {
   args: {
     label: 'Password',
     error: 'Password must be at least 8 characters',
-    children: <input type="password" className="w-full px-3 py-2 border border-red-300 rounded-md" />,
+    children: (
+      <input type="password" className="w-full px-3 py-2 border border-red-300 rounded-md" />
+    ),
   },
 };
 

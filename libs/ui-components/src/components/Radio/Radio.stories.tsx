@@ -59,7 +59,12 @@ export const WithHelperTexts: Story = {
   render: () => (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">Choose a plan</h3>
-      <Radio name="plan" label="Free" helperText="Basic features, limited to 5 projects" defaultChecked />
+      <Radio
+        name="plan"
+        label="Free"
+        helperText="Basic features, limited to 5 projects"
+        defaultChecked
+      />
       <Radio name="plan" label="Pro" helperText="All features, unlimited projects - $19/month" />
       <Radio name="plan" label="Enterprise" helperText="Custom solutions with dedicated support" />
     </div>

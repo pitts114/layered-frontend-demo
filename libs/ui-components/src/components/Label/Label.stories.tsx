@@ -22,7 +22,9 @@ export const Required: Story = {
 export const WithInput: Story = {
   render: () => (
     <div className="w-64">
-      <Label htmlFor="name" required>Full Name</Label>
+      <Label htmlFor="name" required>
+        Full Name
+      </Label>
       <input id="name" type="text" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
     </div>
   ),

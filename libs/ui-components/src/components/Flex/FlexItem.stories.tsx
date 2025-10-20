@@ -14,7 +14,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const DemoBox = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+const DemoBox = ({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div className={`bg-blue-100 border border-blue-300 rounded p-4 ${className}`}>{children}</div>
 );
 
