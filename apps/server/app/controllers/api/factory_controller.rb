@@ -5,9 +5,10 @@ module Api
 
     def create_user
       # Generate defaults if params not provided using Faker
+      filtered_params = factory_params
       user_params = {
-        email: params[:email] || Faker::Internet.unique.email,
-        password: params[:password] || Faker::Internet.password(min_length: 6)
+        email: filtered_params[:email] || Faker::Internet.unique.email,
+        password: filtered_params[:password] || Faker::Internet.password(min_length: 6)
       }
 
       # Store password before encryption for response
@@ -29,6 +30,10 @@ module Api
     end
 
     private
+
+    def factory_params
+      params.permit(:email, :password)
+    end
 
     def prevent_production_access
       if Rails.env.production?
