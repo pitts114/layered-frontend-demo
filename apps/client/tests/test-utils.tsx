@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { mockDeep } from 'vitest-mock-extended';
 
-import { setupStore } from '@obm/domain';
-import type { AppStore, RootState, Services } from '@obm/domain';
-import type { ApiClient } from '@obm/api-client';
+import { setupStore } from '@layered-frontend-demo/domain';
+import type { AppStore, RootState, Services } from '@layered-frontend-demo/domain';
+import type { ApiClient } from '@layered-frontend-demo/api-client';
 
 // use vitest-mock-extended to create a type-safe mock API client
 const createMockApiClient = () => mockDeep<ApiClient>();

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { LoginResponse, RegisterResponse, UserResponse } from '@obm/api-client';
+import type { LoginResponse, RegisterResponse, UserResponse } from '@layered-frontend-demo/api-client';
 import type { RootState } from '../../store';
 import type { Services } from '../../services';
 

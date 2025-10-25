@@ -1,4 +1,4 @@
-import { Button, Box, Flex, Text, Card, Grid } from '@obm/ui-components';
+import { Button, Box, Flex, Text, Card, Grid } from '@layered-frontend-demo/ui-components';
 
 export function TestPage() {
   return (

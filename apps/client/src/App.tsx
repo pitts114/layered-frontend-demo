@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { Background, Navbar, ThemeToggle, Button, Flex, Text, Spinner } from '@obm/ui-components';
+import { Background, Navbar, ThemeToggle, Button, Flex, Text, Spinner } from '@layered-frontend-demo/ui-components';
 import { useAppSelector, useAppDispatch } from './store/hooks';
-import { selectIsAuthenticated, selectAuthInitializing, logoutUser, checkAuth } from '@obm/domain';
+import { selectIsAuthenticated, selectAuthInitializing, logoutUser, checkAuth } from '@layered-frontend-demo/domain';
 import { useDarkMode } from './hooks';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
@@ -49,7 +49,7 @@ function App() {
             weight="semibold"
             className="text-lg text-blue-600 dark:text-blue-400"
           >
-            OBM
+            LayeredFrontendDemo
           </Text>
         }
         right={

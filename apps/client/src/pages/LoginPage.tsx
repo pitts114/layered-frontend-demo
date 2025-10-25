@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { LoginForm, Flex, Box, Text } from '@obm/ui-components';
+import { LoginForm, Flex, Box, Text } from '@layered-frontend-demo/ui-components';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { loginUser, selectAuthLoading, selectAuthError, selectIsAuthenticated } from '@obm/domain';
+import { loginUser, selectAuthLoading, selectAuthError, selectIsAuthenticated } from '@layered-frontend-demo/domain';
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch();

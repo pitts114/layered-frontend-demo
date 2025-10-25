@@ -1,5 +1,5 @@
 {
-  "name": "@obm/domain",
+  "name": "@layered-frontend-demo/domain",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/domain/src",
   "projectType": "library",
@@ -21,5 +21,5 @@
       "dependsOn": ["install"]
     }
   },
-  "implicitDependencies": ["@obm/api-client"]
+  "implicitDependencies": ["@layered-frontend-demo/api-client"]
 }

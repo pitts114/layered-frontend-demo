@@ -7,13 +7,13 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - obm_postgres_data:/var/lib/postgresql/18/docker
+      - layered-frontend-demo_postgres_data:/var/lib/postgresql/18/docker
   redis:
     image: redis:8.2.2
     ports:
       - '6379:6379'
     volumes:
-      - obm_redis_data:/data
+      - layered-frontend-demo_redis_data:/data
 volumes:
-  obm_postgres_data:
-  obm_redis_data:
+  layered-frontend-demo_postgres_data:
+  layered-frontend-demo_redis_data:

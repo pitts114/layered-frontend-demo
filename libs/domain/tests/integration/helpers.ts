@@ -1,4 +1,4 @@
-import { ApiClient } from '@obm/api-client';
+import { ApiClient } from '@layered-frontend-demo/api-client';
 import { setupStore, type AppStore } from '../../src/store';
 import type { Services } from '../../src/services';
 

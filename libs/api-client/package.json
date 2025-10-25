@@ -1,7 +1,7 @@
 {
-  "name": "@obm/api-client",
+  "name": "@layered-frontend-demo/api-client",
   "version": "0.0.1",
-  "description": "API client library for OBM application",
+  "description": "API client library for LayeredFrontendDemo application",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -28,7 +28,7 @@
   "keywords": [
     "api",
     "client",
-    "obm"
+    "layered-frontend-demo"
   ],
   "author": "",
   "license": "ISC",

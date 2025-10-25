@@ -1,1 +1,1 @@
-declare module '@obm/ui-components/styles';
+declare module '@layered-frontend-demo/ui-components/styles';

@@ -13,7 +13,7 @@ import {
   selectAuthError,
 } from '../../../src/features/auth/authSlice';
 import { setupStore, type AppStore } from '../../../src/store';
-import { ApiClient } from '@obm/api-client';
+import { ApiClient } from '@layered-frontend-demo/api-client';
 import type { Services } from '../../../src/services';
 import { mock } from 'vitest-mock-extended';
 

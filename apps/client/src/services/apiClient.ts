@@ -1,4 +1,4 @@
-import { ApiClient } from '@obm/api-client';
+import { ApiClient } from '@layered-frontend-demo/api-client';
 
 export const apiClient = new ApiClient({
   hostname: import.meta.env.VITE_API_HOSTNAME || 'localhost',

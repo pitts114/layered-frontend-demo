@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { increment, decrement, selectCount, selectUser } from '@obm/domain';
-import { Button, Box, Text, Heading, Flex, Stack } from '@obm/ui-components';
+import { increment, decrement, selectCount, selectUser } from '@layered-frontend-demo/domain';
+import { Button, Box, Text, Heading, Flex, Stack } from '@layered-frontend-demo/ui-components';
 import reactLogo from '../assets/react.svg';
 import viteLogo from '/vite.svg';
 import '../App.css';

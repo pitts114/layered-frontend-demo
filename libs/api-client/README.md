@@ -1,6 +1,6 @@
-# @obm/api-client
+# @layered-frontend-demo/api-client
 
-API client library for the OBM application. Provides a typed interface for communicating with the Rails backend API.
+API client library for the LayeredFrontendDemo application. Provides a typed interface for communicating with the Rails backend API.
 
 ## Installation
 
@@ -13,7 +13,7 @@ npm install
 ## Usage
 
 ```typescript
-import { ApiClient } from '@obm/api-client';
+import { ApiClient } from '@layered-frontend-demo/api-client';
 
 // Create an API client instance
 const apiClient = new ApiClient({

@@ -1,10 +1,10 @@
 {
-  "name": "obm",
+  "name": "layered-frontend-demo",
   "private": true,
   "scripts": {
     "install:all": "nx run-many -t install",
     "build": "nx run-many -t build",
-    "build:libs": "nx run-many -t build -p @obm/api-client @obm/domain @obm/ui-components"
+    "build:libs": "nx run-many -t build -p @layered-frontend-demo/api-client @layered-frontend-demo/domain @layered-frontend-demo/ui-components"
   },
   "devDependencies": {
     "nx": "^21.6.5"

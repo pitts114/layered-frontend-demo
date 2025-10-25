@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { RegisterForm, Flex, Box, Text } from '@obm/ui-components';
+import { RegisterForm, Flex, Box, Text } from '@layered-frontend-demo/ui-components';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
   registerUser,
   selectAuthLoading,
   selectAuthError,
   selectIsAuthenticated,
-} from '@obm/domain';
+} from '@layered-frontend-demo/domain';
 
 export const RegisterPage = () => {
   const dispatch = useAppDispatch();

@@ -1,5 +1,5 @@
-import { setupStore } from '@obm/domain';
-import type { Services } from '@obm/domain';
+import { setupStore } from '@layered-frontend-demo/domain';
+import type { Services } from '@layered-frontend-demo/domain';
 import { apiClient } from '../services/apiClient';
 
 const services: Services = {

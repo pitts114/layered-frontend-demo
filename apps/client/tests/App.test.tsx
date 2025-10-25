@@ -3,7 +3,7 @@ import { screen, waitFor } from '@testing-library/react';
 import { mockDeep } from 'vitest-mock-extended';
 import App from '../src/App';
 import { renderWithProviders } from './test-utils';
-import type { ApiClient } from '@obm/api-client';
+import type { ApiClient } from '@layered-frontend-demo/api-client';
 
 describe('App', () => {
   beforeEach(() => {
@@ -46,7 +46,7 @@ describe('App', () => {
       });
 
       await waitFor(() => {
-        expect(screen.queryByText('OBM')).not.toBeInTheDocument();
+        expect(screen.queryByText('LayeredFrontendDemo')).not.toBeInTheDocument();
       });
     });
 
@@ -114,7 +114,7 @@ describe('App', () => {
       });
 
       await waitFor(() => {
-        expect(screen.getByText('OBM')).toBeInTheDocument();
+        expect(screen.getByText('LayeredFrontendDemo')).toBeInTheDocument();
       });
     });
 
@@ -207,7 +207,7 @@ describe('App', () => {
       });
 
       await waitFor(() => {
-        expect(screen.getByText('OBM')).toBeInTheDocument();
+        expect(screen.getByText('LayeredFrontendDemo')).toBeInTheDocument();
       });
     });
 

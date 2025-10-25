@@ -1,4 +1,4 @@
-# OBM
+# LayeredFrontendDemo
 
 A full-stack web application with a React frontend and Rails backend.
 

@@ -1,5 +1,5 @@
 {
-  "name": "obm_client",
+  "name": "layered-frontend-demo_client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,9 +16,9 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@obm/api-client": "file:../../libs/api-client",
-    "@obm/domain": "file:../../libs/domain",
-    "@obm/ui-components": "file:../../libs/ui-components",
+    "@layered-frontend-demo/api-client": "file:../../libs/api-client",
+    "@layered-frontend-demo/domain": "file:../../libs/domain",
+    "@layered-frontend-demo/ui-components": "file:../../libs/ui-components",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0",

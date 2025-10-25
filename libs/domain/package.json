@@ -1,7 +1,7 @@
 {
-  "name": "@obm/domain",
+  "name": "@layered-frontend-demo/domain",
   "version": "0.0.1",
-  "description": "Business logic and state management library for OBM application",
+  "description": "Business logic and state management library for LayeredFrontendDemo application",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -29,12 +29,12 @@
     "redux",
     "domain",
     "business-logic",
-    "obm"
+    "layered-frontend-demo"
   ],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@obm/api-client": "file:../api-client",
+    "@layered-frontend-demo/api-client": "file:../api-client",
     "@reduxjs/toolkit": "^2.9.1"
   },
   "devDependencies": {
