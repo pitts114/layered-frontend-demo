@@ -2,6 +2,19 @@
 
 A full-stack web application with a React frontend and Rails backend.
 
+The client application demonstrates a **layered frontend architecture** where the client code is split into three distinct libraries that are integrated together in the main app:
+- **Presentation Layer** (`@obm/ui-components`) - Reusable React components with Tailwind CSS
+- **Business Logic Layer** (`@obm/domain`) - Redux state management, thunks, and selectors
+- **Data Access Layer** (`@obm/api-client`) - HTTP client for communicating with the Rails backend
+
+This separation creates clear boundaries between concerns and makes each layer independently testable and reusable, while the client app brings them all together.
+
+## Demo Application
+
+![Application Screenshot](ui.png)
+
+The demo includes user authentication (login/register) with dark mode support, showcasing how the layered architecture works together in a real application.
+
 ## Project Structure
 
 ```
